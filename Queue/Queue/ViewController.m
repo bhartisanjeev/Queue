@@ -11,6 +11,7 @@
 @interface ViewController ()
 
 - (Node *)createNewNodeWithData:(NSInteger)data ;
+- (void)animateLabel:(UILabel *)label ;
 
 @end
 
@@ -20,7 +21,12 @@
 
     [super viewDidLoad];
     
+    //animate label
+    [self animateLabel:self.lblQueue];
+    
     int n = 10 ;
+    
+    //enquing 10 elements in queue
     while (n-- > 0) [self enqueOperationWithData:n];
    
     NSLog(@"\n\n Traverse Elements");
@@ -101,6 +107,31 @@
     return _node ;
 }
 
+- (void)animateLabel:(UILabel *)label {
+    
+    [UIView animateWithDuration:1.5f animations:^{
+        
+        [self scaleLabel:label WithScale:1.6f andScaleY:1.6f andAlpha:1.0f];
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:1.5f animations:^{
+            
+            [self scaleLabel:label WithScale:1.0f andScaleY:1.0f andAlpha:0.2f];
+            
+        } completion:^(BOOL finished) {
+            
+            [self animateLabel:label];
+            
+        }];
+    }];
+}
+
+- (void)scaleLabel:(UILabel *)label WithScale:(float)scaleX andScaleY:(float)scaleY andAlpha:(float)alphaValue{
+    
+    label.transform = CGAffineTransformMakeScale(scaleX, scaleY) ;
+    label.alpha = alphaValue ;
+}
 
 
 @end

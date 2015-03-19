@@ -16,6 +16,8 @@
     
 }
 
+@property (nonatomic,weak) IBOutlet UILabel *lblQueue ;
+
 //method to insert element to queue
 - (void)enqueOperationWithData:(NSInteger)data ;
 
