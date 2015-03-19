@@ -10,8 +10,9 @@
 
 @interface ViewController ()
 
-- (Node *)createNewNodeWithData:(NSInteger)data ;
-- (void)animateLabel:(UILabel *)label ;
+- (Node *)createNewNodeWithData:(NSInteger)data ;//method to create node with NULL header
+
+- (void)animateLabel:(UILabel *)label ;// simple In n Oout animation
 
 @end
 
